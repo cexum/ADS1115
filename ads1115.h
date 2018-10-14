@@ -162,7 +162,7 @@ enum POINTER_MASK {
  * */   
 #define CONFIG_REGISTER_BUSY 							0b00000000
 #define CONFIG_REGISTER_IDLE 							0b10000000
-#define CONFIG_REGISTER_START_CONVERSION 		0b10000000
+#define CONFIG_REGISTER_START_CONVERSION 				0b10000000
 
 enum OPERATION_MASK {
 	BUSY = CONFIG_REGISTER_BUSY,
@@ -339,12 +339,12 @@ enum COMPARATOR_QUEUE_MASK {
 void ADS1115_init(int id, enum ADS1115_ADDRESS addr);
 void ADS1115_close();
 void ADS1115_set_conversion_rate(enum RATE_MASK sps);
-void ADS1115_set_conversion_mode(enum CONVERSION_MODE_MASK );
+void ADS1115_set_conversion_mode(enum CONVERSION_MODE_MASK mode);
 void ADS1115_set_multiplex(enum MULT_MASK mult);
 void ADS1115_set_comparator_mode(enum COMPARATOR_MODE_MASK cmm);
 void ADS1115_set_comparator_polarity(enum COMPARATOR_POLARITY_MASK cpm);
 void ADS1115_set_comparator_latch(enum COMPARATOR_LATCH_MASK clm);
-void ADS1115_set_comparator_queue(enum COMPARATOR_QUEUE_MASK);
+void ADS1115_set_comparator_queue(enum COMPARATOR_QUEUE_MASK queue);
 void ADS1115_set_pga(enum PGA_MASK pga);
 double ADS1115_get_single_conversion();
 double ADS1115_get_average_conversions(int count);
