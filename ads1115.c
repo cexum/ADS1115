@@ -49,6 +49,12 @@ void ADS1115_close() {
 		}	
 	}
 	
+void ADS1115_set_pointer_register(enum POINTER_MASK mode) {
+	puts("ADS1115_set_pointer_register");
+	ui8_pointer_register_mask = mode;
+	printf("pointer register mask set to: %d\n", mode);
+	}
+	
 void ADS1115_set_conversion_rate(enum RATE_MASK sps) {
 	puts("ADS1115_set_conversion_rate");	
 	ui8_config_register_conversion_rate_mask = sps;	
@@ -92,6 +98,7 @@ void ADS1115_set_comparator_queue(enum COMPARATOR_QUEUE_MASK queue) {
 	}
 	
 void ADS1115_set_pga(enum PGA_MASK pga) {
+	puts("ADS1115_set_pga");
 	float f_temp_range;
 	
 	switch(pga) {
@@ -124,8 +131,9 @@ void ADS1115_set_pga(enum PGA_MASK pga) {
 	}
 	
 double ADS1115_get_single_conversion() {	
+	//puts("ADS1115_get_single_conversion");
 	// set pointer register to config mode
-	ui8arr_write_buffer[0] = 1;
+	ui8arr_write_buffer[0] = POINTER_REGISTER_CONFIG;
 	
 	// clear previous register masks 
 	ui8arr_write_buffer[1] = 0; // clear bits 15-8
